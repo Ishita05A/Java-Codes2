@@ -27,5 +27,6 @@ public class totalSubarrayWithSumK {
         System.out.println("Enter target");
         int x = sc.nextInt();
         System.out.println(totalPair(arr, x));
+        sc.close();
     }
 }
