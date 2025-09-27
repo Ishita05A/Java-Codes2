@@ -3,42 +3,23 @@ package Day83;
 import java.util.Scanner;
 
 public class LongestSubArrayWithKSum {
-    // static int longestSubArray(int[] arr,int target){
-    // int max = 0;
-    // int count = 0;
-    // int sum = 0;
-    // for(int i = 0;i<arr.length;i++){
-    // sum += arr[i];
-    // count++;
-    // if(sum == target){
-    // max = Math.max(max, count);
-    // count = 0;
-    // sum = 0;
-    // }
-    // }
-    // return max;
-
-    // }
-
-    static int longestSubArrayBruteForce(int[] arr, int target) {
+    static int longestSubArray(int[] arr,int target){
         int max = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-            int sum = 0;
-            for (int j = i; j < arr.length; j++) {
-                sum += arr[j];
-
-                if (sum == target) {
-
-                    max = Math.max(max, j - i + 1);
-
-                }
+        int start = 0;
+        int sum = 0;
+        for(int end = 0;end<arr.length;end ++){
+            sum+=arr[end];
+            while(sum>target && start<=end){
+                sum-=arr[start];
+                start++;
             }
-
+            if(sum == target) max = Math.max(start,end-start+1);
         }
         return max;
 
     }
+
+    
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -51,8 +32,8 @@ public class LongestSubArrayWithKSum {
         }
         System.out.println("Enter target");
         int x = sc.nextInt();
-        // System.out.println(longestSubArray(arr, x));
-        System.out.println(longestSubArrayBruteForce(arr, x));
+        System.out.println(longestSubArray(arr, x));
+        
         sc.close();
     }
 }
