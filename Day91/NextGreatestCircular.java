@@ -13,6 +13,9 @@ static void display(int[] arr){
         }
         System.out.println();
     }
+
+
+    
     static int[] next_greatest(int[] arr){
         Stack<Integer> st = new Stack<>();
     
