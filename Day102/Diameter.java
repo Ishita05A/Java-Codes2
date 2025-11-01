@@ -11,7 +11,7 @@ public class Diameter {
     }
     static int height(Node root){
         if(root == null || (root.left == null && root.right == null)) return 0;
-        return 1 + height(root.left) + height(root.right);
+        return 1 + Math.max(height(root.left),height(root.right));
     }
 
     static int diameter(Node root){
@@ -19,8 +19,8 @@ public class Diameter {
         int ld = diameter(root.left);
         int rd = diameter(root.right);
         int mid = height(root.left) + height(root.right);
-        if(root.left != null) ld++;
-        if(root.right != null) rd++;
+        if(root.left != null) mid++;
+        if(root.right != null) mid++;
         return Math.max(mid, Math.max(rd, ld));
     }
     public static void main(String[] args) {
