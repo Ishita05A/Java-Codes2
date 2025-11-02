@@ -8,7 +8,7 @@ public class ZigZagTraversal {
         Node(int val){
             this.val = val;
         } 
-    }
+    }    
     static void zig_zag(Node root,int n){
         if(root == null) return;
         if(n == 1) System.out.print(root.val+" ");
@@ -25,7 +25,7 @@ public class ZigZagTraversal {
     }
     static int height(Node root){
         if(root == null) return 0;
-        return 1+height(root.left)+height(root.right);
+        return 1+Math.max(height(root.left), height(root.right));
     }
     public static void main(String[] args) {
         Node root = new Node(1);
