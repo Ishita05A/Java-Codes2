@@ -15,6 +15,14 @@ public class Nto1 {
         System.out.print(n+" ");
 
     }
+    static int sum(int n){
+        if(n == 1) return 1;
+        return n + sum(n-1);
+    }
+    static int fact(int n){
+        if(n == 1) return 1;
+        return n*fact(n-1);
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter number");
@@ -22,6 +30,10 @@ public class Nto1 {
         one_to_n(n);
         System.out.println();
         n_to_1(n);
+        System.out.println();
+        System.out.println(sum(n));
+    
+        System.out.println(fact(n));
         sc.close();
     }
     
