@@ -8,7 +8,15 @@ public class sorting {
             System.out.print(arr[i]+" ");
         }
     }
-
+    static void bubble_sort(int[] arr,int i,int j){
+        if(i >= j ) return;
+        if(arr[i] >arr[j]){
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        bubble_sort(arr,i+1,j-1);
+    }
     public static void bubbleSort(int[] arr){
         int n = arr.length;
         for(int i = 0;i<arr.length;i++){
@@ -55,7 +63,7 @@ public class sorting {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        insertionSort(arr);
+        bubble_sort(arr,0,n-1);
         display(arr);
         sc.close();
         
