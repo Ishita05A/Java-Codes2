@@ -17,7 +17,7 @@ public class FindUnion {
         for(int num : arr2) mp.add(num);
         int[] ans = new int[mp.size()];
         int i = 0;
-        for(int e: mp) ans[i] = e;
+        for(int e: mp) ans[i++] = e;
         return ans;
     }
     static int[] find_union(int[] arr1,int[] arr2){
