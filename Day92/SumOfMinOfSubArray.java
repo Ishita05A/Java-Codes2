@@ -37,7 +37,7 @@ public class SumOfMinOfSubArray {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        // System.out.println(min_Of_SubArray_sum(arr));
+       
         System.out.println(sumSubarrayMins(arr));
         sc.close();
     }
