@@ -1,7 +1,7 @@
 package Day112;
 
-public class DoublyLL {
-    public static class Node{
+public class DeleteDLL {
+     public static class Node{
         int val;
         Node next;
         Node prev;
@@ -25,37 +25,30 @@ public class DoublyLL {
         }
         return c;
     }
-    static Node insert(Node head,int data,int pos){
-        Node newNode = new Node(data);
-        Node temp = head;
-        if(head == null) return newNode;
-        if(head.next == null){
-            newNode.next = head;
-            head.prev = newNode;
-            head = newNode;
-            return head;
-        }
+    static Node delete(Node head, int pos){
+        if(head==null) return null;
+        if(head.next == null) return null;
         int size = findLength(head);
-        if(pos>size+1){
-            System.out.println("Position Not Valid");
-            return head;
-        }
-        if(pos == size+1){
-            while (temp.next != null) temp = temp.next;
-            temp.next = newNode;
-            newNode.prev = temp;
-            return head;
-        }
+        Node temp = head;
+        if(pos == 1) return head.next;
         int c = 1;
-        temp = head;
-        while(c<pos-1){
-            temp = temp.next;
-            c++;
+        if(pos<size){
+            while(c<pos-1){
+                temp = temp.next;
+                c++;
+            }
+            temp.next.next.prev = temp;
+            temp.next = temp.next.next;
+            return head;
         }
-        newNode.next = temp.next;
-        temp.next.prev = newNode;
-        temp.next = newNode;
-        newNode.prev = temp;
+        
+        if(pos == size){
+            temp = head;
+            while (temp.next.next != null)  temp = temp.next;
+            temp.next = null;
+            return head;
+        }
+        if(pos>size) System.out.println("Position not valid");
         return head;
     }
     public static void main(String[] args) {
@@ -69,9 +62,8 @@ public class DoublyLL {
         c.prev = b;
         c.next = d;
         d.prev = c;
-        a = insert(a, 9, 1);
+        a = delete(a, 5);
         display(a);
-
     }
     
 }
