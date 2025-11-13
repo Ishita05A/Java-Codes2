@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FourSum {
-    static List<List<Integer>>
+   
     static List<List<Integer>> fourSum(int[] arr, int target) {
         List<List<Integer>> ans = new ArrayList<>();
         int sum = 0;
@@ -23,7 +23,7 @@ public class FourSum {
                 int temp = target - sum;
                 if (mp.contains(temp)) {
                     List<Integer> a = Arrays.asList(arr[i], arr[j], arr[k], temp);
-                    a
+                  
                     ans.add(a);
 
                 }

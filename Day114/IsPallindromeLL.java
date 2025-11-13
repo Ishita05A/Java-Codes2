@@ -60,9 +60,7 @@ public class IsPallindromeLL {
         a.next = b;
         b.next = c;
         c.next = d;
-        a = reverse(a);
-        display(a);
-        System.out.println(findMiddle(a).val);
+       
         System.out.println(isPallindrome(a));
     }
     
