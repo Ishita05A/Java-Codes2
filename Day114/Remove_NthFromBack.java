@@ -21,7 +21,7 @@ public class Remove_NthFromBack {
     static void remove_nth_from_end(Node head,int n){
         Node temp = head;
         int length = find_length(head);
-        while(length)
+        // while(length)
     }
     public static void main(String[] args) {
         Node a = new Node(1);
