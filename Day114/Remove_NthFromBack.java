@@ -18,11 +18,12 @@ public class Remove_NthFromBack {
         }
         return size;
     }
-    static void remove_nth_from_end(Node head,int n){
-        Node temp = head;
-        int length = find_length(head);
-        // while(length)
-    }
+    // static void remove_nth_from_end(Node head,int n){
+    //     Node temp = head;
+    //     int length = find_length(head);
+        
+       
+    // }
     public static void main(String[] args) {
         Node a = new Node(1);
         Node b = new Node(5);
