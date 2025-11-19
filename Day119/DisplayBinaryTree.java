@@ -9,6 +9,14 @@ public class DisplayBinaryTree {
             this.val = val;
         }
     }
+    static int sumOfTreeNode(Node root){
+        if(root == null) return 0;
+        return root.val+sumOfTreeNode(root.right)+sumOfTreeNode(root.left);
+    }
+    static int sizeOfBT(Node root){
+        if(root == null) return 0;
+        return 1+sizeOfBT(root.left) + sizeOfBT(root.right);
+    }
     static void display(Node root){
         if(root == null) return;
         System.out.print(root.val+"->" );
@@ -33,6 +41,8 @@ public class DisplayBinaryTree {
         b.left = e;
         b.right = f;
         display(root);
+        System.out.println(sizeOfBT(root));
+        System.out.println(sumOfTreeNode(root));
     }
     
 }
