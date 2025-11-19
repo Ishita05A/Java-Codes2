@@ -1,9 +1,7 @@
 package Day119;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
-import Day87.prefix;
 
 import java.util.*;
 
@@ -34,6 +32,7 @@ public class CountSubArray {
             arr[i] = sc.nextInt();
         }
         System.out.println(count_subarray(arr, 6));
+        sc.close();
     }
     
 }
