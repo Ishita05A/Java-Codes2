@@ -10,8 +10,8 @@ public class KokoEatingBanana {
             }
             return max;
         }
-        static int findHour(int[] arr,int hourly){
-            int totalHour = 0;
+        static long findHour(int[] arr,int hourly){
+            long totalHour = 0;
             for(int i = 0;i<arr.length;i++){
                 totalHour+=(int)Math.ceil((double)arr[i]/hourly);
             }
@@ -24,7 +24,7 @@ public class KokoEatingBanana {
             int ans = -1;
             while(st<=end){
                 int mid = (end-st)/2+st;
-                int totalHour = findHour(arr, mid);
+                long totalHour = findHour(arr, mid);
                 if(totalHour <= h){
                     ans = mid;
                     end = mid-1;
