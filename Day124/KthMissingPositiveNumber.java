@@ -35,6 +35,7 @@ public class KthMissingPositiveNumber {
         System.out.println("Enter missing position");
         int k = sc.nextInt();
         System.out.println(missing_number(arr, k));
+        sc.close();
 
     }
     
