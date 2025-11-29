@@ -1,5 +1,8 @@
 package Day127;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class binaryTree {
     public static class Node{
         Node left;
@@ -55,11 +58,32 @@ public class binaryTree {
         nthLevel(root.left, n-1);
         nthLevel(root.right, n-1);
     }
-    static void display1(Node root){
-        if(root == null) {
-            
-            return;
+    
+    static int diameter(Node root){
+        if(root == null || (root.left == null && root.right ==null)) return 0;
+        int left_ans = diameter(root.left);
+        int right_ans = diameter(root.right);
+        int mid = edgeHeight(root.left) + edgeHeight(root.right);
+        if(root.left != null) mid++;
+        if(root.right != null) mid++;
+        return Math.max(right_ans, Math.max(left_ans, mid)); 
+    }
+
+    static void BSF(Node root){
+        if(root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (q.size()>0) {
+            Node temp = q.peek();
+            if(temp.left != null) q.add(temp.left);
+            if(temp.right != null)  q.add(temp.right);
+            System.out.print(temp.val+" "); 
+            q.remove();
         }
+    }
+
+    static void display1(Node root){
+        if(root == null)  return;
         System.out.print(root.val+" -> ");
         if(root.left != null) System.out.print(root.left.val+" "); else System.out.print("n ");
         if(root.right != null) System.out.print(root.right.val); else System.out.print("n ");
@@ -72,7 +96,6 @@ public class binaryTree {
         System.out.print(root.val+" ");
         display(root.left);
         display(root.right);
-
     }
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -101,6 +124,14 @@ public class binaryTree {
         System.out.println(findHeight(root));
         System.out.println(edgeHeight(root));
         nthLevel(root, 2);
+        System.out.println();
+        for(int i = 1;i<=3;i++){
+            nthLevel(root, i);
+            System.out.println();
+        }
+        BSF(root);
+        System.out.println();
+        System.out.println(diameter(root));
 
     }
     
