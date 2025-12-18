@@ -10,13 +10,13 @@ public class IsValidBST {
             this.val = val;
         }
     }
-    static boolean isValid(Node root,int minValue,int maxValue){
+    static boolean isValid(Node root,long minValue,long maxValue){
         if(root == null) return true;
         if(root.val < minValue || root.val > maxValue) return false;
         return isValid(root.left, minValue, root.val) && isValid(root.right, root.val, maxValue);
     }
     static boolean isValidBST(Node root){
-        return isValid(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
     public static void main(String[] args) {
         Node root = new Node(8);
