@@ -1,6 +1,6 @@
 package Day135;
 
-public class CeilInBinaryTree {
+public class FloorInBinaryTree {
     public static class Node {
         int val;
         Node left;
@@ -10,22 +10,20 @@ public class CeilInBinaryTree {
             this.val = val;
         }
     }
-
-    static int ceil_in_binaryTree(Node root, int target) {
+    static int floorInBinaryTree(Node root,int target){
         Node node = new Node(-1);
-        while (root != null) {
-            if(root.val == target) return root.val;
-            else if (root.val < target)
-                root = root.right;
-            else {
-                node = root;
-                root = root.left;
+        while(root != null){
+            if(root. val == target){
+                return root.val;
             }
-            
+            else if(root.val < target){
+                node = root;
+                root = root.right;
+            }
+            else root = root.left;
         }
         return node.val;
     }
-
     public static void main(String[] args) {
         Node root = new Node(8);
         Node a = new Node(5);
@@ -44,7 +42,7 @@ public class CeilInBinaryTree {
         b.right = f;
         d.left = g;
         f.left = h;
-        System.out.println(ceil_in_binaryTree(root, 3));
+        System.out.println(floorInBinaryTree(root, 3));
     }
-
+    
 }
