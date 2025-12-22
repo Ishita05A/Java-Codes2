@@ -3,23 +3,23 @@ package Day139;
 import java.util.Scanner;
 
 public class Divide2Number {
-    static int divide2Number(int n,int d){
-        if(n == d) return 1;
+    static int divide2Number(int dividend,int divisor){
+        if(dividend == divisor) return 1;
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
         boolean sign = true;
-        if(n>0 && d<0) sign = false;
-        if(n<0 && d>0) sign = false;
-        n = (int)Math.abs(n);
-        d = (int)Math.abs(d);
-        int ans = 0;
+        if(dividend>=0 && divisor<0) sign = false;
+        if(dividend<=0 && divisor>0) sign = false;
+        long n = Math.abs((long)dividend);
+        long d= Math.abs((long)divisor);
+        long ans = 0;
         while(n>=d){
             int cnt = 0;
             while(n>=(d<<cnt+1)) cnt++;
             ans+=(1<<cnt);
             n = n-(d<<cnt);
         }
-        if(ans == (1<<31) && sign == true) return Integer.MAX_VALUE;
-        if(ans == (1<<31) && sign == false) return Integer.MIN_VALUE;
-        return sign?ans:-ans;
+        
+        return sign?(int)ans:-(int)ans;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
