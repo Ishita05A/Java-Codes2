@@ -37,6 +37,7 @@ public class LargestNonReapetingSubString {
         System.out.println("Enter String");
         String s = sc.nextLine();
         System.out.println(longest_brute(s));
+        System.out.println(longest_optimized(s));
         sc.close();
     }
     
