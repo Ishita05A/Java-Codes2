@@ -25,8 +25,9 @@ public class InsertionOfHeap {
                     int temp = arr[parent];
                     arr[parent] = arr[idx];
                     arr[idx] = temp;
+                    idx = parent;
                 }
-                idx--;
+                else return;
             }
         }
         void delete(){
