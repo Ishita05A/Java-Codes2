@@ -29,6 +29,32 @@ public class InsertionOfHeap {
                 idx--;
             }
         }
+        void delete(){
+            if(size == 0){
+                System.out.println("Heap is Empty");
+                return;
+            }
+            arr[1] = arr[size];
+            size--;
+            int i = 1;
+            while(i<size){
+                int leftIdx = 2*i;
+                int rightIdx = 2*i+1;
+                if(leftIdx<size && arr[leftIdx]>arr[i]){
+                    int temp = arr[leftIdx];
+                    arr[leftIdx] = arr[i];
+                    arr[i] = temp;
+                    i = leftIdx;
+                }
+                else if(rightIdx<size && arr[rightIdx]<arr[i]){
+                    int temp = arr[rightIdx];
+                    arr[rightIdx] = arr[i];
+                    arr[i] = temp;
+                    i = rightIdx;
+                }
+                else return;
+            }
+        }
         void display(){
             for(int i = 1;i<=size;i++){
                 System.out.print(arr[i]+" ");
@@ -38,11 +64,15 @@ public class InsertionOfHeap {
     }
     public static void main(String[] args) {
         BinaryHeap h = new BinaryHeap(5);
-        h.insert(3);
-        h.insert(5);
-        h.insert(6);
-        h.insert(7);
+        h.insert(9);
+        h.insert(12);
         h.insert(8);
+        h.insert(2);
+        h.insert(8);
+
+        h.display();
+        h.delete();
+        // h.delete();
         h.display();
     }
     
