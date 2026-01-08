@@ -8,6 +8,30 @@ public class InsertNode {
             this.data  = data;
         }
     }
+    static Node reverse(Node head){
+        Node curr = head;
+        Node after = head;
+        Node prev = null;
+        while(curr != null){
+            after = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = after;
+        }
+        return prev;
+
+    }
+    static Node findMiddle(Node head){
+        if(head == null || head.next == null) return head;
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow  = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+
+    }
     static boolean search_element(Node head,int val){
         if(head == null) return false;
         if(head.data == val) return true;
@@ -62,6 +86,8 @@ public class InsertNode {
         display(a);
         System.out.println(find_length(a));
         System.out.println(search_element(a, 4));
+        System.out.println(findMiddle(a).data);
+        display(reverse(a));
     }
     
 }
