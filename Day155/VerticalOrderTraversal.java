@@ -42,6 +42,9 @@ public class VerticalOrderTraversal {
     public static void main(String[] args) {
         Node root = new Node(1);
         Node a = new Node(2);
+
+
+        
         Node b = new Node(3);
         Node c = new Node(4);
         Node d = new Node(5);
