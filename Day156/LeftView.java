@@ -25,7 +25,7 @@ public class LeftView {
     }
     static List<Integer> leftView(Node root){
         List<Integer> ans = new ArrayList<>();
-        helper(root, 0, ans);
+        helper(root, 0, ans); 
         return ans;
     }
     public static void main(String[] args) {
