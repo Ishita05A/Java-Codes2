@@ -35,6 +35,7 @@ public class PathSumIII {
         a.right = d;
         b.left = e;
         b.right = f;
+        System.out.println(pathSum(root, 8));
     }
     
 }
