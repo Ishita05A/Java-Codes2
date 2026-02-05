@@ -30,14 +30,14 @@ public class NumberOfIsland {
         
     }
     static void noOfIsland(int[][] mat){
-        int n = mat.length;
-        int m = mat[0].length;
-        int[][] vis = new int[n][m];
-        for(int i = 0;i<n;i++){
-            for(int j = 0;j<m;j++){
+        // int n = mat.length;
+        // int m = mat[0].length;
+        // int[][] vis = new int[n][m];
+        // for(int i = 0;i<n;i++){
+        //     for(int j = 0;j<m;j++){
 
-            }
-        }
+        //     }
+        // }
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -51,6 +51,7 @@ public class NumberOfIsland {
                 mat[i][j] = sc.nextInt();
             }
         }
+        sc.close();
     }
     
 }
