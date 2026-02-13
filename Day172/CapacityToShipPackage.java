@@ -1,4 +1,4 @@
-// package Day172;
+package Day172;
 import java.util.*;
 public class CapacityToShipPackage {
     static int findMax(int[] arr){

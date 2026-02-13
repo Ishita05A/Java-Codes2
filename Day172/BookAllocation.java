@@ -1,3 +1,4 @@
+package Day172;
 import java.util.Scanner;
 
 public class BookAllocation {
