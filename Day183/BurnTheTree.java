@@ -14,14 +14,6 @@ public class BurnTheTree {
             this.val = val;
         }
     }
-    static class Pair{
-        Node node;
-        int time;
-        Pair(Node node,int time){
-            this.node = node;
-            this.time = time;
-        }
-    }
     static int timeToBurn(Node root,Node target){
         Queue<Node> q = new LinkedList<>();
         HashMap<Node,Node> mp = new HashMap<>();
@@ -29,16 +21,14 @@ public class BurnTheTree {
         while (!q.isEmpty()){
             Node top = q.poll();
             if(top.left != null){
-                if(!mp.containsKey(top.left)) q.add(top.left);
-                if(!mp.containsKey(top.left)) mp.put(top.left, top);
+                q.add(top.left);
+                mp.put(top.left, top);
             }
             if(top.right != null){
-                if(!mp.containsKey(top.right)) q.add(top.right);
-                if(!mp.containsKey(top.right)) mp.put(top.right, top);
+                q.add(top.right);
+                mp.put(top.right, top);
             }
         }
-        // Queue<Pair> qt = new LinkedList<>();
-        // qt.add(new Pair(target, 0));
         q.add(target);
         HashSet<Node> vis = new HashSet<>();
         int time = 0;
@@ -84,6 +74,6 @@ public class BurnTheTree {
         b.left = e;
         b.right = f;
         System.out.println(timeToBurn(root, a));
-    }
+    }        
     
 }
