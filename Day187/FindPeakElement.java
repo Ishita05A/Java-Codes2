@@ -3,36 +3,36 @@ package Day187;
 import java.util.Scanner;
 
 public class FindPeakElement {
-    static int findPeak(int[] arr){
-        int n = arr.length;
-        if(arr.length == 1) return 0;
-        if(arr[0] >arr[1]) return 0;
-        if(arr[n-1] > arr[n-2]) return n-1;
-        int st = 1;
-        int end = arr.length-2;
+    static int findPeak(int[][] arr,int n,int m,int col){
+        int max = -1;
+        int idx = -1;
+        for(int i = 0;i<n;i++){
+            if(arr[i][col] >max){
+                max= arr[i][col];
+                idx = i;
+            }
+        }
+        return idx;
+    }
+
+    static int[] findPeakindex(int[][] mat){
+        int n = mat.length;
+        int m = mat[0].length;
+        int st = 0;
+        int end = m-1;
         while(st<=end){
             int mid = (end-st)/2+st;
-            if(arr[mid-1] < arr[mid]  &&  arr[mid] > arr[mid+1]){
-                return mid;
+            int row_idx = findPeak(mat, n, m, mid);
+            int left = mid>0 ? mat[row_idx][mid-1]:-1;
+            int right = mid < m-1 ? mat[row_idx][mid+1] : -1;
+            if(left < mat[row_idx][mid] && mat[row_idx][mid] > right) {
+
+                return new int[] {row_idx,mid};
             }
-            else if(arr[mid] < arr[mid+1]) st = mid-1;
-            else end = mid-1;
+            else if(mat[row_idx][mid] < right) st = mid + 1;
+            else end = mid - 1;
         }
-        return -1;
-    }
-    static int[] findPeakindex(int[][] mat){
-        int[] ans = new int[2];
-        int n = mat.length;
-        int peak = Integer.MIN_VALUE;
-        for(int i = 0;i<n;i++){
-            int col = findPeak(mat[i]);
-            if(mat[i][col] >peak){
-                peak = mat[i][col];
-                ans[0] = i;
-                ans[1] = col;
-            }
-        }
-        return ans;
+        return new int[] {-1,-1};
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
