@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 
 public class reverseArray {
-    static void disaply(int[] arr){
+    static void display(int[] arr){
         for(int i = 0;i<arr.length;i++){
             System.out.print(arr[i]+" ");
         }
@@ -33,7 +33,7 @@ public class reverseArray {
             arr[i] = sc.nextInt();
         }
         reverseArr(arr, 0,n-1);
-        disaply(arr);
+        display(arr);
         sc.close();
     }
     
