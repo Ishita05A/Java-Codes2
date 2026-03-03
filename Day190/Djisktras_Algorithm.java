@@ -1,34 +1,45 @@
 package Day190;
 import java.util.*;
+
 public class Djisktras_Algorithm {
     static  class Pair{
-        int node;
-        int dist;
-        Pair(int dist,int node){
-            this.dist = dist;
-            this.node = node;
+        int first;
+        int second;
+        Pair(int first,int second){
+            this.first = first;
+            this.second = second;
         }
     }
-    static List<Integer> djisktraAlgo(List<List<Integer>> adj,int v,int src){
-        int[] dist = new int[v];
-        int n = adj.size();
-        for(int i = 0;i<v;i++){
-            dist[i] = Integer.MAX_VALUE;
+    static List<Integer> djisktraAlgo(int[][] mat, int n,int m){
+        List<List<Pair>> adj = new ArrayList<>();
+        for(int i = 0;i<=n;i++){
+            adj.add(new ArrayList<>());
         }
-        int[] parent = new int[v];
-        PriorityQueue<Pair> q = new PriorityQueue<>();
-        q.add(new Pair(0, src));
-        while (!q.isEmpty()){
+        for(int i = 0;i<m;i++){
+            adj.get(mat[i][0]).add(new Pair(mat[i][2], mat[i][1]));
+            adj.get(mat[i][1]).add(new Pair(mat[i][2], mat[i][0]));
+        }
+        PriorityQueue<Pair> q = new PriorityQueue<Pair>((x,y)->x.first-y.first);
+        int[] dist = new int[n+1];
+        int[] parent = new int[n+1];
+        for(int i = 0;i<=n;i++){
+            dist[i] = Integer.MAX_VALUE;
+            parent[i] = i;
+        }
+        dist[1] = 0;
+        q.add(new Pair(0, 1));
+        while(!q.isEmpty()){
             Pair top = q.poll();
-            int node = top.node;
-            int wt = top.dist;
-            for(int i = 0;i<2;i++){
-                int edW = adj.get(node).get(i);
-                int it = adj.get(node).get(i);
-                if(edW+wt < dist[it]){
-                    dist[it] = edW+wt;
-                    parent[it] = node;
-                    q.add(new Pair(edW+wt, it));
+            int node = top.second;
+            int wt = top.first;
+            if(wt > dist[node]) continue;
+            for(Pair it : adj.get(node)){
+                int adjNode = it.second;
+                int ewt = it.first;
+                if(ewt+wt < dist[adjNode]){
+                    dist[adjNode] = ewt+wt;
+                    parent[adjNode] = node;
+                    q.add(new Pair(ewt+wt, adjNode));
                 }
             }
         }
@@ -37,37 +48,29 @@ public class Djisktras_Algorithm {
             path.add(-1);
             return path;
         }
-        for(int i = 0;i<v;i++){
-            if(dist[i] == Integer.MAX_VALUE){
-                dist[i] = -1;
-            }
-        }
-        int node  = n;
+        int node = n;
         while(parent[node] != node){
             path.add(node);
             node = parent[node];
         }
-        path.add(src);
+        path.add(1);
         Collections.reverse(path);
         return path;
     }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter nodes");
+         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter no. of nodes");
         int n = sc.nextInt();
         System.out.println("Enter edges");
         int m = sc.nextInt();
-        List<List<Integer>> adj = new ArrayList<>();
-        for(int i = 0;i<=n;i++){
-            adj.add(new ArrayList<>());
+        System.out.println("Enter elements ");
+        int[][] arr = new int[m][3];
+        for (int i = 0; i < m; i++) {
+            for(int j = 0;j<3;j++){
+                arr[i][j] = sc.nextInt();
+            }
         }
-        for(int i = 0;i<m;i++){
-            int u = sc.nextInt();
-            int v = sc.nextInt();
-            adj.get(i).add(u);
-            adj.get(i).add(v);
-        }
-        System.out.println(djisktraAlgo(adj, n, 0));
+        System.out.println(djisktraAlgo(arr, n,m));
         sc.close();
 
     }
