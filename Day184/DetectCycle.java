@@ -8,6 +8,26 @@ public class DetectCycle {
             this.val = val;
         }
     }
+    static void display(Node temp){
+        while(temp != null){
+            System.out.print(temp.val+" ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+    static Node segregate(Node head){
+        Node odd = head;
+        Node even = head.next;
+        Node evenHead = head.next;
+        while(even != null && evenHead != null){
+            odd.next = odd.next.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
+    }
     static boolean isCyclic(Node head){
         Node slow = head;
         Node fast = head;
@@ -32,6 +52,8 @@ public class DetectCycle {
         c.next = d;
         d.next = e;
         // e.next = b;
-        System.out.println(isCyclic(a));
+        // System.out.println(isCyclic(a));
+        Node head = segregate(a);
+        display(head);
     }
 }
