@@ -14,7 +14,7 @@ public class NoOfDistinctIsland {
                 if(nrow >= 0 && nrow<n && ncol >=0 && ncol<m && mat[nrow][ncol] == 1 && vis[nrow][ncol] == 0){
                     dfs(nrow, ncol, mat, vis);
                 }
-            }
+            }   
         }
     }
     static int countNoOfIsland(int[][] mat){
