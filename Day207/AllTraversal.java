@@ -60,7 +60,42 @@ public class AllTraversal {
         if(root.left != null) preOrder(root.left);
         if(root.right != null) preOrder(root.right);
     }
-    static void post
+    static void postOrder_1Stack(Node root){
+        Stack<Node> st = new Stack<>();
+        Node node = root;
+        while (!st.isEmpty() || node != null) {
+            if(node != null){
+                st.push(node);
+                node = node.left;
+            }
+            else{
+                Node temp = st.peek().right;
+                if(temp == null){
+                    temp = st.pop();
+                    System.out.print(temp.val+" ");
+                    while(!st.isEmpty() &&  temp == st.peek().right){
+                        temp = st.pop();
+                        System.out.print(temp.val+" ");
+                    }
+                }
+                else node = temp;
+            }
+        }
+    }
+    static void postorder_Iterative(Node root){
+        Stack<Node> st = new Stack<>();
+        st.push(root);
+        Stack<Node> gt = new Stack<>();
+        while(!st.isEmpty()){
+            Node top = st.pop();
+            gt.push(top);
+            if(top.left != null) st.push(top.left);
+            if(top.right != null) st.push(top.right);
+        }
+        while(!gt.isEmpty()){
+            System.out.print(gt.pop().val+" ");
+        }
+    }
     static void postorder(Node root){
         if(root.left != null) postorder(root.left);
         if(root.right != null) postorder(root.right);
@@ -90,6 +125,10 @@ public class AllTraversal {
         inOrder_iterative(root);
         System.out.println();
         preOrder_Iterative(root);
+        System.out.println();
+        postorder_Iterative(root);
+        System.out.println();
+        postOrder_1Stack(root);
 
     }
     
