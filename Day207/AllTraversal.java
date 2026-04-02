@@ -60,6 +60,7 @@ public class AllTraversal {
         if(root.left != null) preOrder(root.left);
         if(root.right != null) preOrder(root.right);
     }
+    static void post
     static void postorder(Node root){
         if(root.left != null) postorder(root.left);
         if(root.right != null) postorder(root.right);
