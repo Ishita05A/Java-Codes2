@@ -1,7 +1,6 @@
 package Day207;
 
-import java.util.Stack;
-
+import java.util.*;
 public class AllTraversal {
     static class Node{
         int val;
@@ -12,15 +11,16 @@ public class AllTraversal {
         }
     }
     static void levelOrder(Node root){
-        Stack<Node> st = new Stack<>();
-        st.push(root);
-        while(!st.isEmpty()){
-            int size = st.size();
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int size =q.size();
             for(int i = 0;i<size;i++){
-                Node top = st.pop();
+                Node top = q.poll();
                 System.out.print(top.val+" ");
-                if(top.right != null) st.push(top.right); 
-                if(top.left != null) st.push(top.left);
+                if(top.left != null) q.add(top.left);
+                if(top.right != null) q.add(top.right); 
+                
             }
             System.out.println();
         }
