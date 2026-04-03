@@ -61,8 +61,8 @@ public class ZigZagTraversal {
         if(level == 1 ){
             a.add(root.val);
         }
-        addOdd(root.right, level-1, a);
-        addOdd(root.left, level-1, a);
+        addEven(root.right, level-1, a);
+        addEven(root.left, level-1, a);
         
     }
     static void zigzag(Node root,int level,List<Integer> a){

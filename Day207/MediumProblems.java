@@ -1,5 +1,8 @@
 package Day207;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MediumProblems {
     static class Node{
         int val;
@@ -38,6 +41,32 @@ public class MediumProblems {
         if(root.right != null) mid++;
         return Math.max(Math.max(right, left), mid);
     }
+    static void addOdd(Node root,int level,List<Integer> a){
+        if(root == null) return;
+        if(level == 1){
+            a.add(root.val);
+            return;
+        }
+        addOdd(root.left, level-1, a);
+        addOdd(root.right, level-1, a);
+    }
+    static void addEven(Node root,int level,List<Integer> a){
+        if(root == null) return;
+        if(level == 1){
+            a.add(root.val);
+            return;
+        }
+        addEven(root.right, level-1, a);
+        addEven(root.left, level-1, a);
+    }
+    static void ZigZag(Node root,int level,List<Integer> a){
+        if(root == null) return;
+        if(level%2 == 1){
+            addOdd(root, level, a);
+
+        }
+        else addEven(root, level, a);
+    }
     public static void main(String[] args) {
          Node root = new Node(1);
         Node a = new Node(2);
@@ -70,6 +99,14 @@ public class MediumProblems {
         System.out.println(isBalanced(root));
         System.out.println(diameter(root2));
         System.out.println(isIdentical(root, root2));
+        int n = maxDepth(root2);
+        List<List<Integer>> ans = new ArrayList<>();
+        for(int i = 1;i<=n;i++){
+            List<Integer> aa = new ArrayList<>();
+            ZigZag(root,i,aa);
+            ans.add(aa);
+        }
+        System.out.println(ans);
     }
     
 }
