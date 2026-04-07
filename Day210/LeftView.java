@@ -2,7 +2,7 @@ package Day210;
 
 import java.util.Arrays;
 
-public class RightView {
+public class LeftView {
     static class Node {
         int val;
         Node left;
@@ -21,9 +21,11 @@ public class RightView {
     }
     static void dfs(Node root,int level,int[] ans){
         if(root == null) return;
-        if(ans[level] == -1) ans[level] = root.val;
-        dfs(root.right, level+1, ans);
+        if(ans[level] == -1){
+            ans[level] = root.val;
+        }
         dfs(root.left, level+1, ans);
+        dfs(root.right, level+1, ans);
         
     }
     public static void main(String[] args) {
