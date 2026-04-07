@@ -1,7 +1,5 @@
 package Day208;
 
-import java.util.Stack;
-
 public class BoundaryTraversal {
     static class Node{
         int val;
@@ -14,7 +12,8 @@ public class BoundaryTraversal {
     static void leftTraversal(Node root){
         if((root == null) || (root.left == null && root.right == null)) return;
         System.out.print(root.val+" ");
-        leftTraversal(root.left);
+        if(root.left != null) leftTraversal(root.left);
+        else leftTraversal(root.right);
     }
     static void leafNode(Node root){
         if(root == null) return;
@@ -24,10 +23,13 @@ public class BoundaryTraversal {
         leafNode(root.left);
         leafNode(root.right);
     }
-    static void rightTraversal(Node root,Stack<Integer> st){
-        if(root == null || root.right == null) return;
-        st.add(root.val);
-        rightTraversal(root.right, st);
+    static void rightTraversal(Node root){
+        if(root == null || (root.left == null && root.right == null)) return;
+        if(root.right != null) rightTraversal(root.right);
+        else{
+            rightTraversal(root.left);
+        }
+        System.out.print(root.val+" ");
     }
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -43,13 +45,11 @@ public class BoundaryTraversal {
         a.right = d;
         b.left = e;
         b.right = f;
-        leftTraversal(root);
+        System.out.print(root.val+" ");
+        leftTraversal(root.left);
         leafNode(root);
-        Stack<Integer> st = new Stack<>();
-        rightTraversal(root, st);
-        while(st.size() != 1){
-            System.out.print(st.pop()+" ");
-        }
+        rightTraversal(root.right);
+        
     }
     
 }
