@@ -36,7 +36,7 @@ public class mergeSort {
         }
         while(j<right.length) arr[k++] = right[j++];
 
-        
+
     }
     static void merge_sort(int[] arr,int st,int end){
         if(st>=end) return;
