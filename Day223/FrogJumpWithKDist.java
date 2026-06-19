@@ -5,7 +5,7 @@ public class FrogJumpWithKDist {
 
     static int minDist_tab(int idx, int k, int[] arr,int[] dp){
         dp[0] = 0;
-        
+
         for(int i = 1;i<=idx;i++){
             int minStep = Integer.MAX_VALUE;
             int jump = Integer.MAX_VALUE;
