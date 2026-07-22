@@ -1,8 +1,6 @@
 package Day231;
 import java.util.*;
 
-import Day141.removeDuplicate;
-
 public class RootToNodePath {
      static class Node{
         Node left;
