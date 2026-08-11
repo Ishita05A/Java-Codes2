@@ -19,6 +19,7 @@ class DisjoinSet{
         return parent[node] = findParent(parent[node]);
     }
     void unionBySize(int u,int v){
+        
         int ulp_u = findParent(u);
         int ulp_v = findParent(v);
         if(ulp_u == ulp_v) return;
