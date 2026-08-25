@@ -1,7 +1,5 @@
 package Day242;
 
-import java.util.Arrays;
-
 public class UnboundedKnapSack {
     static int helper2(int[] wt, int[] val, int W,int[][] dp){
         int n = wt.length;
